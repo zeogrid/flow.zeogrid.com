@@ -15,7 +15,7 @@ export default function LoaderPage() {
 
       <style jsx>{`
         .custom-loader {
-          border-top: 3px solid #facc15;
+          border-top: 3px solid #7D47FC;
           border-right: 3px solid transparent;
           border-radius: 50%;
           width: 4rem;
