@@ -29,13 +29,22 @@ export default function NavBar() {
                         const isActive = pathname === nav.href  // Check if the current path matches the nav link
 
                         return (
-                            <Link key={index} className={`${isActive ? "text-primary" : "text-muted-foreground"
-                                } transition-all ease-in-out duration-300`} href={nav.href}>
-
-                                <Button  className={`${socialLink.length - 1 != index ? "border-r-0" : ""} transition-all ease-in-out duration-300` } variant={"outline"}>
-                                   {nav.icon}{nav.title}
-                                </Button>
-                            </Link>
+                            <Link key={index} 
+                            className={`${isActive ? "text-primary" : "text-muted-foreground"} 
+                                       transition-all ease-in-out duration-300`} 
+                            href={nav.href}>
+                      
+                        <Button 
+                          variant="outline" 
+                          className={`
+                            ${(index != navList.length - 1) ?" border-r-0":""} 
+                            transition-all ease-in-out duration-300`}>
+                          {nav.icon}
+                          {nav.title}
+                        </Button>
+                      </Link>
+                      
+                      
 
                         )
                     })}
