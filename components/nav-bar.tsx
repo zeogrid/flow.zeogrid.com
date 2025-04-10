@@ -24,7 +24,7 @@ export default function NavBar() {
                     <span className='text-md max-md:hidden'>ZeoFlow</span>
                 </div>
                 <span className='border-r h-6 hidden lg:flex'></span>
-                <div className="flex items-center text-sm justify-center gap-6 max-lg:hidden ">
+                <div className="flex items-center text-sm justify-center  max-lg:hidden ">
                     {navList.map((nav, index) => {
                         const isActive = pathname === nav.href  // Check if the current path matches the nav link
 
@@ -32,7 +32,9 @@ export default function NavBar() {
                             <Link key={index} className={`${isActive ? "text-primary" : "text-muted-foreground"
                                 } transition-all ease-in-out duration-300`} href={nav.href}>
 
-                                {nav.title}
+                                <Button  className={`${socialLink.length - 1 != index ? "border-r-0" : ""} transition-all ease-in-out duration-300` } variant={"outline"}>
+                                   {nav.icon}{nav.title}
+                                </Button>
                             </Link>
 
                         )
@@ -40,7 +42,7 @@ export default function NavBar() {
                 </div>
             </div>
             <div className=' items-center justify-center gap-4 hidden lg:flex'>
-                <Link href={"/custom-response"}><Button className='text-muted-foreground  font-normal' variant={"secondary"}>Custom Response</Button>  </Link>
+                <Link href={"/custom-response"}><Button className='  font-normal' variant={"secondary"}>Custom Response</Button>  </Link>
                 <span className='border-r h-6'></span>
 
 

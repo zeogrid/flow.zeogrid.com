@@ -19,11 +19,12 @@ import {
 import { ModeToggle } from "@/components/mode-toggle"  
 import { navList } from "@/constants/nav-list"
 import { socialLink } from "@/constants/social-link"
+import { usePathname } from "next/navigation"
 
 export function MobileNavDrawer() {
  
     const triggerRef = React.useRef<HTMLButtonElement | null>(null)
-
+    const pathname = usePathname()   
     const handleOpen = () => {
         triggerRef.current?.blur()
     }
@@ -51,14 +52,16 @@ export function MobileNavDrawer() {
                             Main site navigation menu
                         </DrawerDescription>
                     </DrawerHeader>
-                    <nav className="grid grid-cols-4 p-4 gap-4">
+                    <nav className="grid grid-cols-4 p-4 gap-y-4">
                         {
+                            
                             navList.map((nav, index) => {
+                                const isActive = pathname === nav.href 
                                 return (
                                     <DrawerClose key={index} asChild>
                                         <Link
                                             href={nav.href}
-                                            className="text-md w-full flex flex-col items-center justify-center"
+                                            className={`${isActive ? "text-primary" : ""} text-md w-full flex flex-col items-center justify-center`}
                                         >
                                             
                                             <div className="w-full hover:bg-secondary aspect-square border flex items-center justify-center">
@@ -80,7 +83,7 @@ export function MobileNavDrawer() {
                         {/* Custom Response Button */}
                         <DrawerClose asChild>
                             <Link href="/custom-response" className="block text-md hover:underline">
-                                <Button variant="outline" className="w-full py-3 h-fit">
+                                <Button variant={"secondary"} className="w-full py-4 h-fit">
                                     Custom Response
                                 </Button>
                             </Link>
